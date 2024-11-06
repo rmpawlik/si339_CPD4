@@ -48,6 +48,7 @@ nav ul {
     overflow-x: auto; /* Enable horizontal scrolling */
     margin-left: 5px; /* Space on the left */
     text-align: center; /* Center items */
+    align-items: center; /* Center items vertically */
 }
 
 nav ul li {
@@ -80,6 +81,12 @@ nav ul li a:focus, footer a:focus { /* Combined focus styles for nav and footer 
     background-color: rgba(255, 255, 255, 0.1); /* Background change on focus */
 }
 
+.banner {
+    position: -webkit-sticky; /* Safari support */
+    position: sticky;
+    top: 0; /* Makes the nav stick to the top of the viewport */
+    z-index: 10; /* Ensures the banner stays above other content */
+}
 /* Header styles */
 header {
     text-align: center; /* Center header text */
@@ -392,6 +399,48 @@ ul.homepage_meets li a:focus {
 } 
 
 
+/* Media Queries */
+@media (min-width: 768px) {
+    nav ul {
+        margin-right: 20px; /* Increase space on larger screens */
+    }
+    nav {
+        padding: 10px; /* Add padding for better spacing */
+        font-size: 1em; /* Larger font size */
+    
+    }
+    nav ul li i {
+        font-size: 2em; /* Larger icon size */
+    }
+    h2 {
+        margin-bottom: 1%; /* Space below subtitles */
+    }
+
+    #individual-results {
+        grid-template-columns: repeat(3, 1fr); /* Adjust grid for larger screens */
+    }
+
+    #gallery-images {
+        grid-template-columns: 1fr 1fr; /* Two columns for images */
+    }
+    
+    
+}
+
+@media (min-width: 1024px) {
+    #individual-results {
+        grid-template-columns: repeat(4, 1fr); /* Adjust grid for even larger screens */
+    }
+    nav ul li i {
+        font-size: 2.5em; /* Even larger icon size */
+    }
+
+    #gallery-images {
+        grid-template-columns: repeat(3, 1fr); /* Three columns for images */
+    }
+}
+
+
 /* Media Queries for Color Scheme Preference */
 @media (prefers-color-scheme: dark) {
     body {
@@ -501,6 +550,7 @@ ul.homepage_meets li a {
         background-color: rgb(121, 175, 209); /* Different color for every other card */
     }
 }
+
 
 
 

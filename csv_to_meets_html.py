@@ -22,6 +22,7 @@ def split_after_two_sentences(html_string):
 
     return first_part_html, remaining_part_html
 
+
 def csv_to_html(csv_filename, output_folder):
     # Derive the HTML filename by replacing the CSV extension with '.html' in the meets folder
     html_filename = os.path.join(output_folder, os.path.splitext(os.path.basename(csv_filename))[0] + '.html')
@@ -58,11 +59,14 @@ def csv_to_html(csv_filename, output_folder):
 <title>{link_text}</title>
 <link rel="stylesheet" href="../css/reset.css">
 <link rel="stylesheet" href="../css/style.css">
+<link href="../dist/css/lightbox.css" rel="stylesheet" /> 
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 <script src="https://kit.fontawesome.com/97514ed53b.js" crossorigin="anonymous"></script>
+
 </head>
    <body>
    <a href = "#main">Skip to Main Content</a>
+    <div class="banner">
    <nav>
      <ul>
         <li> <i class="fa-solid fa-person-running" aria-label="Running icon"> </i></li>
@@ -73,6 +77,7 @@ def csv_to_html(csv_filename, output_folder):
         <li><a href="#gallery" tabindex=0>Gallery</a></li>
      </ul>
    </nav>
+</div>
    <header>
       <!--Meet Info-->
        
@@ -91,22 +96,6 @@ def csv_to_html(csv_filename, output_folder):
 
 """
 
-        # Add JavaScript for Summary Button
-        html_content += """   
-        <script>
-    function toggleSummary() {
-    let hiddenText = document.getElementById('hidden-summary');
-    let btnText = document.getElementById('toggle-summary-btn');
-
-    if (hiddenText.style.display === "none") {
-        hiddenText.style.display = "inline";
-        btnText.textContent = "Hide";
-    } else {
-        hiddenText.style.display = "none";
-        btnText.textContent = "Show More";
-    }
-}
-</script>"""
         # Start container for individual results
         html_content += """<section id="team-results">\n
         <h2>Team Results</h2>"""
@@ -143,7 +132,9 @@ def csv_to_html(csv_filename, output_folder):
                 html_content += f"""
 <div class="athlete" tabindex=0>
 <figure> 
+ <a href="../images/profiles/{profile_pic}" target="_blank" data-lightbox="gallery" data-title="Profile picture of {name}" data-alt="Profile of {name}">
     <img src="../images/profiles/{profile_pic}" width="200" alt="Profile picture of {name}"> 
+    </a>
     <figcaption>{name}</figcaption>
 </figure>
 <dl>
@@ -156,7 +147,7 @@ def csv_to_html(csv_filename, output_folder):
 
         html_content += """</section>\n
         <section id = "gallery">
-        <h2 class="gallery-header">Gallery <button id="toggle-gallery" aria-expanded="false">Show</button></h2>
+        <h2 class="gallery-header">Gallery <button id="toggle-gallery" aria-expanded="false" onclick="toggleGallery(this)">Show</button></h2>
     <div id="gallery-images" class="collapsible">
         """
 
@@ -166,23 +157,6 @@ def csv_to_html(csv_filename, output_folder):
    </div>
    </section>
    </main> 
-
-   <script>
-   document.getElementById('toggle-gallery').addEventListener('click', function() {
-    const galleryImages = document.getElementById('gallery-images');
-    const isExpanded = this.getAttribute('aria-expanded') === 'true';
-    
-    if (isExpanded) {
-        galleryImages.classList.remove('show');
-        this.setAttribute('aria-expanded', 'false');
-        this.textContent = 'Show';
-    } else {
-        galleryImages.classList.add('show');
-        this.setAttribute('aria-expanded', 'true');
-        this.textContent = 'Hide';
-    }
-});
-</script>
 
    <footer>
                      <p>
@@ -197,6 +171,7 @@ def csv_to_html(csv_filename, output_folder):
 
                      </footer>
                 <script src="../js/starter.js"></script>
+                <script src="../dist/js/lightbox-plus-jquery.js"></script>
         </body>
 </html>
 """
