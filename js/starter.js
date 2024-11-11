@@ -24,7 +24,7 @@ if (prefersReducedMotion) {
         if (parentLink) {
             parentLink.removeAttribute('data-lightbox');
             parentLink.removeAttribute('data-title');
-            parentLink.style.cursor = "default"; // Optional: Change cursor to indicate no action
+            parentLink.style.cursor = "default"; 
             parentLink.onclick = function(event) { event.preventDefault(); }; // Prevent default click action
         }
     };
@@ -45,7 +45,6 @@ function toggleGallery(button) {
       button.textContent = 'Hide';
   }
 }
-
 
 function toggleSummary() {
 let hiddenText = document.getElementById('hidden-summary');
