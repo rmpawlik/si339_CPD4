@@ -8,7 +8,9 @@ if (prefersReducedMotion) {
         link.removeAttribute('data-lightbox'); // Remove data-lightbox attribute to disable lightbox
         link.removeAttribute('href'); // Remove href attribute to disable link
     });
+    
 }
+
 
 // Replacing missing images with a default image
   document.querySelectorAll('img').forEach(img => {
