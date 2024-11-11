@@ -43,8 +43,8 @@ nav {
 
 nav ul {
     display: flex; /* Use flexbox for horizontal layout */
-    flex-wrap: nowrap;
-    white-space: nowrap;
+    flex-wrap: nowrap; /* Prevent wrapping */
+    white-space: nowrap; /* Prevent wrapping */
     overflow-x: auto; /* Enable horizontal scrolling */
     margin-left: 5px; /* Space on the left */
     text-align: center; /* Center items */
@@ -146,19 +146,25 @@ p .time {
     background-color: rgb(121, 175, 209); /* Darker shade on hover */
 }
 
-#toggle-summary-btn:focus, #toggle-gallery:focus {
+#toggle-summary-btn:focus, #toggle-gallery:focus, .control:focus {
     outline: 2px solid rgb(2, 34, 54); /* Outline on focus */
     outline-offset: 2px; /* Space between outline and button */
 }
 
 /* Table styles */
+#team-results {
+    width: 100%; /* Full width for table */
+}
 table {
     border-collapse: collapse; /* Ensure no space between borders */
     overflow-y: auto; /* Enable vertical scrolling */
     max-height: 400px; /* Set height for scrolling */
     display: block; /* Enable overflow */
     margin-top: 10px; /* Space above table */
-}
+    width: fit-content; /* Fit table to content */
+    text-align: left; /* Align text to the left */
+    margin: 0 auto; /* Centers the table horizontally */
+    }
 
 th, td {
     padding: 10px; /* Space inside cells */
@@ -311,11 +317,11 @@ td:nth-child(3n+1) {
 
 /* Footer styles */
 footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 15px 0;
-    position: relative;
+    background-color: #333; /* Dark background for footer */
+    color: white; /* White text color */
+    text-align: center; /* Center text */
+    padding: 15px 0; /* Space inside footer */
+    position: relative; /* Position relative for absolute links */
     margin-top: 20px; /* Space above footer */
 }
 
@@ -327,14 +333,32 @@ footer a {
 
 
 /* Extra Home Page Styling */
-
 nav ul.homepage_nav {
     align-items: center; /* Vertically center items */
     justify-content: flex-start; /* Align items to the left */
+
 }
 
 nav ul.homepage_nav li {
     margin-right: 1.5rem; /* Provide space between icon and link */
+}
+.controls {
+    display: flex; /* Align buttons horizontally */
+    flex-wrap: wrap; /* Wrap buttons on smaller screens */
+    gap: 7px; /* Space between buttons */
+    justify-content: left; /* Center the buttons */
+    padding-bottom: 20px; /* Add padding around the control group */
+}
+
+.control {
+    background-color: rgb(7, 85, 133); /* Match existing button color */
+    color: white; /* White text */
+    padding: 5px 8px;
+    font-size: 0.75em;
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor */
+    transition: background-color 0.3s; /* Smooth transition for hover */
 }
 
 ul.homepage_meets li {
@@ -374,6 +398,144 @@ ul.homepage_meets li a:focus {
 }
 
 
+/* Media Queries for Screen Size*/
+@media (min-width: 768px) {
+    body {
+        font-size: 1.1em; /* Larger font size */
+    }
+    h1 {
+        font-size: 4vh; /* Larger title size */
+    }
+    main {
+        padding: 50px; /* Increase padding */
+    }
+    section {
+        margin-bottom: 40px; /* Increase space between sections */
+        padding: 20px; /* Increase padding */
+    }
+
+    h2 {
+        margin-bottom: 1%; /* Space below subtitles */
+        font-size: 3vh; /* Larger subtitle size */
+    }
+    nav {
+        padding: 10px; /* Add padding for better spacing */
+        font-size: 1em; /* Larger font size */
+    }
+
+    nav ul {
+        margin-right: 20px; /* Increase space on larger screens */
+    }
+
+    nav ul li {
+        margin-right: 2rem; /* Increase space between nav items */
+    }
+
+    nav ul li i {
+        font-size: 2em; /* Larger icon size */
+    }
+
+    #team-results table {
+        margin: 0 auto; /* Centers the table horizontally */
+    }
+
+    #team-results th, 
+    #team-results td {
+        padding-left: 2em; /* Adds spacing for readability */
+        padding-right: 2em; /* Adds spacing for readability */
+    }
+
+
+    #individual-results {
+        grid-template-columns: repeat(3, 1fr); /* Adjust grid for larger screens */
+    }
+
+    #gallery-images {
+        grid-template-columns: 1fr 1fr; /* Two columns for images */
+    }
+
+    #gallery-images img {
+        margin: auto; /* Center images */
+    }
+    
+    #toggle-summary-btn, #toggle-gallery {
+        padding: 10px 20px; /* Increase padding */
+        font-size: 2.3vh; /* Larger font size */
+    } 
+    
+    .control {
+        padding: 8px 12px; /* Increase padding */
+        font-size: 1em; /* Larger font size */
+    }
+    .controls {
+        gap: 7px; /* Space between buttons */
+    }
+
+    footer {
+        padding: 20px 0; /* Increase padding */
+        font-size: 0.9em; /* Smaller font size */
+    }
+    
+}
+
+@media (min-width: 1024px) {
+
+    body {
+        font-size: 1.2em; /* Larger font size */
+    }
+    h1 {
+        font-size: 4.5vh; /* Larger title size */
+    }
+
+    h2 {
+        font-size: 3.5vh; /* Larger subtitle size */
+    }
+
+    section {
+        padding: 30px; /* Increase padding */
+    }
+
+    nav ul {
+        justify-content: space-around; /* Evenly space items */
+    }
+
+    nav ul li {
+        margin-right: 3rem; /* Increase space between nav items */
+    }
+
+    nav ul li i {
+        font-size: 2.5em; /* Even larger icon size */
+    }
+
+    #team-results td {
+        padding-left: 3em; /* Adds spacing for readability */
+        padding-right: 3em; /* Adds spacing for readability */
+    }
+
+    #individual-results {
+        grid-template-columns: repeat(4, 1fr); /* Adjust grid for even larger screens */
+    }
+
+    #gallery-images {
+        grid-template-columns: repeat(3, 1fr); /* Three columns for images */
+    }
+
+    #gallery-images img {
+        max-height: 300px; /* Limit image height */
+
+    }
+
+    #toggle-summary-btn, #toggle-gallery {
+        padding: 12px 24px; /* Increase padding */
+        font-size: 2.5vh; /* Larger font size */
+    }
+    footer {
+        padding: 30px 0; /* Increase padding */
+        font-size: 1em; /* Larger font size */
+    }
+}
+
+
 /* Media query for prefers-reduced-motion */
 @media (prefers-reduced-motion: reduce) {
     /* Remove transitions for hover and focus effects */
@@ -397,49 +559,6 @@ ul.homepage_meets li a:focus {
         transition: none; /* Disable transitions */
     }
 } 
-
-
-/* Media Queries */
-@media (min-width: 768px) {
-    nav ul {
-        margin-right: 20px; /* Increase space on larger screens */
-    }
-    nav {
-        padding: 10px; /* Add padding for better spacing */
-        font-size: 1em; /* Larger font size */
-    
-    }
-    nav ul li i {
-        font-size: 2em; /* Larger icon size */
-    }
-    h2 {
-        margin-bottom: 1%; /* Space below subtitles */
-    }
-
-    #individual-results {
-        grid-template-columns: repeat(3, 1fr); /* Adjust grid for larger screens */
-    }
-
-    #gallery-images {
-        grid-template-columns: 1fr 1fr; /* Two columns for images */
-    }
-    
-    
-}
-
-@media (min-width: 1024px) {
-    #individual-results {
-        grid-template-columns: repeat(4, 1fr); /* Adjust grid for even larger screens */
-    }
-    nav ul li i {
-        font-size: 2.5em; /* Even larger icon size */
-    }
-
-    #gallery-images {
-        grid-template-columns: repeat(3, 1fr); /* Three columns for images */
-    }
-}
-
 
 /* Media Queries for Color Scheme Preference */
 @media (prefers-color-scheme: dark) {
